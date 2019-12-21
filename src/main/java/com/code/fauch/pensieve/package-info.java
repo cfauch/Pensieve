@@ -72,6 +72,35 @@
  *          ctrl.transfer("WORLD!");
  *      }
  * </pre>
+ * <h3>Socket with data flow rate control</h3>
+ * <p>
+ * To send data through a socket by controlling data rate, you must instantiate a 
+ * {@linkplain com.code.fauch.pensieve.SocketWithControlFlowRate} like this:
+ * <pre>
+ * SocketWithControlFlowRate socket = SocketWithControlFlowRate.with(new TransferRate(24))
+ *              .networkInterface("lo")
+ *              .open()
+ * </pre>
+ * <ul>
+ * <li><code>new TransferRate(24)</code> is the driver to use by the flow controller to drive flow rate</li>
+ * <li><code>"lo"</code> is the network interface to use by the socket</li>
+ * <li><code>open()</code> this method creates the socket and open it</li>
+ * </ul>
+ * Now, you just have to send packets by calling the <code>send</code> method. The packets will be sent with 
+ * a given rate depending on the driver used.
+ * <h4>complete example:</h4>
+ * <pre>
+ *      final String[] words = new String[] {"HELLO WORLD!", "COUCOU", "MON VOISIN TOTORO"};
+ *      try(SocketWithControlFlowRate socket = SocketWithControlFlowRate.with(new TransferRate(24))
+ *              .networkInterface("lo")
+ *              .open()) {
+ *          for (String w : words) {
+ *              final byte[] data = w.getBytes();
+ *              socket.send(new DatagramPacket(data, data.length, InetAddress.getByName("233.54.12.235"), 4446));
+ *          }
+ *      }
+ * </pre>
+ * </p>
  * 
  * @author c.fauch
  *
