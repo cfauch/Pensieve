@@ -18,7 +18,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.fauch.code</groupId>
   <artifactId>pensieve</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>pensieve</name>
   <description>How to control data flow rate</description>
@@ -76,7 +76,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <repository>
       <id>github</id>
       <name>GitHub cfauch Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/cfauch/hedwig</url>
+      <url>https://maven.pkg.github.com/cfauch/pensieve</url>
     </repository>
   </distributionManagement>
 </project>
